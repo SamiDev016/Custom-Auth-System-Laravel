@@ -7,6 +7,8 @@
     <div class="card shadow-lg p-4" style="width: 400px; border-radius: 10px;">
         <h3 class="text-center mb-4">Login</h3>
         <form method="post" accept="{{route("login.post")}}">
+            @csrf
+            @method('post')
             <div class="form-group mb-3">
                 <label for="email" class="form-label">Email Address</label>
                 <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
