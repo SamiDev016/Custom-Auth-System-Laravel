@@ -28,7 +28,7 @@ class AuthManager extends Controller
         $credentials = $request->only("email","password");
 
         if(Auth::attempt($credentials)){
-            return redirect()->intended(route("home"))->with("Success","Welcom User");
+            return redirect()->intended(route("home"))->with("success","Welcom User");
         }
         return redirect(route('login'))->with("error","Error in Login ");
     }
@@ -37,7 +37,7 @@ class AuthManager extends Controller
         $this->validate($request,[
             "name" => "required",
             "email"=> "required|email|unique:users",
-            "password"=> "required|password"
+            "password"=> "required"
         ]);
 
         $data["name"] = $request->name;
@@ -49,7 +49,7 @@ class AuthManager extends Controller
         {
             return redirect(route('register'))->with("error","ERROR");
         }
-        return redirect(route('login'))->with("succces","Login with your new account");
+        return redirect(route('login'))->with("success","Login with your new account");
 
     }
 

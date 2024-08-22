@@ -3,6 +3,32 @@
 @section('title', 'Register')
 
 @section('content')
+
+    <div class="mt-5">
+        @if ($errors->any())
+            <div class="col-12">
+                @foreach ($errors->all() as $error )
+                    <div class="alert-danger alert">
+                        {{$error}}
+                    </div>
+                @endforeach
+            </div>
+        @endif
+
+        @if (session()->has('error'))
+        <div class="alert-danger alert">
+            {{session('error')}}
+        </div>
+        @endif
+
+        @if (session()->has('success'))
+        <div class="alert-success alert">
+            {{session('success')}}
+        </div>
+        @endif
+
+    </div>
+
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="card shadow-lg p-4" style="width: 400px; border-radius: 10px;">
         <h3 class="text-center mb-4">Register</h3>

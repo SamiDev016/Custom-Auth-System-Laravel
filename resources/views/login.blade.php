@@ -3,6 +3,30 @@
 @section('title', 'Login')
 
 @section('content')
+<div class="mt-5">
+    @if ($errors->any())
+        <div class="col-12">
+            @foreach ($errors->all() as $error )
+                <div class="alert-danger alert">
+                    {{$error}}
+                </div>
+            @endforeach
+        </div>
+    @endif
+
+    @if (session()->has('error'))
+    <div class="alert-danger alert">
+        {{session('error')}}
+    </div>
+    @endif
+
+    @if (session()->has('success'))
+    <div class="alert-success alert">
+        {{session('success')}}
+    </div>
+    @endif
+
+</div>
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="card shadow-lg p-4" style="width: 400px; border-radius: 10px;">
         <h3 class="text-center mb-4">Login</h3>
@@ -11,11 +35,11 @@
             @method('post')
             <div class="form-group mb-3">
                 <label for="email" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" required>
             </div>
             <div class="form-group mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" required>
             </div>
             <div class="form-check mb-3">
                 <input type="checkbox" class="form-check-input" id="remember">
